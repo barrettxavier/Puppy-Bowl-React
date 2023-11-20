@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const PuppyList = ({ setShowPuppyDetails }) => {
+const PuppyList = ({ setShowPuppyDetails, setSinglePuppyDetails }) => {
   const [allPuppyList, setAllPuppyList] = useState([]);
 
   useEffect(() => {
@@ -10,13 +10,14 @@ const PuppyList = ({ setShowPuppyDetails }) => {
       );
       const responseJson = await response.json();
       setAllPuppyList(responseJson.data.players);
+      console.log(responseJson.data);
     };
     getPuppies();
   }, []);
 
   return (
     <>
-      <h1>Puppies</h1>
+      <h2>Puppies</h2>
 
       {allPuppyList.map((singlePuppy) => {
         return (
@@ -25,10 +26,16 @@ const PuppyList = ({ setShowPuppyDetails }) => {
               className="card"
               onClick={() => {
                 setShowPuppyDetails(true);
+                setSinglePuppyDetails(singlePuppy);
               }}
             >
               {singlePuppy.name}
               <hr />
+              <img
+                className="img"
+                src={singlePuppy.imageUrl}
+                alt={`${singlePuppy.name} Image`}
+              />
             </div>
           </div>
         );
