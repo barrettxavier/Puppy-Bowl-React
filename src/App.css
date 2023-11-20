@@ -5,6 +5,19 @@
   text-align: center;
 }
 
+.card-container {
+  display: inline-flex;
+}
+
+.card {
+  text-align: center;
+  width: 10rem;
+  height: 15rem;
+  background: rgb(168, 41, 41);
+  margin: 1.5rem;
+  border-radius: 10px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

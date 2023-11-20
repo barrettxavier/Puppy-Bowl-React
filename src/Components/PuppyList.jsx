@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const PuppyList = () => {
+const PuppyList = ({ setShowPuppyDetails }) => {
   const [allPuppyList, setAllPuppyList] = useState([]);
 
   useEffect(() => {
@@ -18,11 +18,21 @@ const PuppyList = () => {
     <>
       <h1>Puppies</h1>
 
-      {allPuppyList.map((singlePuppy) => (
-        <div className="card" key={singlePuppy.id} onClick={() => {}}>
-          {singlePuppy.name}
-        </div>
-      ))}
+      {allPuppyList.map((singlePuppy) => {
+        return (
+          <div className="card-container" key={singlePuppy.id}>
+            <div
+              className="card"
+              onClick={() => {
+                setShowPuppyDetails(true);
+              }}
+            >
+              {singlePuppy.name}
+              <hr />
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 };
